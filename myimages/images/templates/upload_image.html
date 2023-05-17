@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload</title>
+</head>
+{% load static %}
+ <p hidden>{{ request.session.get_session_cookie_age}} </p>
+<body  style="background-image: url({% static 'bg.jpg' %});">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit"> Upload Image </button>
+        <br>
+        <br>
+        <ul>
+        <li>
+            <a href="{% url 'index1' %}"><span class="fa fa-home mr-3"></span><p style="font-size:30px"> Link to a thumbnail that's 200px in height</a>
+        </li>
+            <li>
+            <a href="{% url 'index2' %}"><span class="fa fa-home mr-3"></span><p style="font-size:30px"> Link to a thumbnail that's 400px in height</a>
+            </li>
+            <li>
+            <a href="{% url 'index' %}"><span class="fa fa-home mr-3"></span><p style="font-size:30px"> Link to the originally uploaded image</a>
+            </li>
+        </ul>
+    </form>
+</body>
+</html>
